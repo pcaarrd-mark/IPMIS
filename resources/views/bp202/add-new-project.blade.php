@@ -78,15 +78,15 @@
                             </div>
                             <br>
                             <br> --}}
-                            <div class="form-group" style="width: 50%">
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">2.1 Implementing Department / Agency</label>
-                                <select class="form-control select2 select2bs4" id="implementing_agency" name="implementing_agency" style="width: 50%">
+                                <select class="form-control select2 select2bs4" id="implementing_agency" name="implementing_agency">
                                 </select>
                             </div>
                             <br>
-                            <div class="form-group" style="width: 50%">
+                            <div class="form-group">
                               <label for="exampleInputEmail1">2.2 Co-Implementing Department / Agency</label>
-                              <select class="form-control select2 select2bs4" id="coimplementing_agency" name="coimplementing_agency[]" multiple="multiple" style="width: 50%">
+                              <select class="form-control select2 select2bs4" id="coimplementing_agency" name="coimplementing_agency[]" multiple="multiple">
                               </select>
                           </div>
                           <br>
@@ -389,7 +389,7 @@
                       </div>
                     </div>
                     <hr>
-                    <button type="button" class="btn btn-primary btn-lg float-right"  onclick="frmSubmit()">Submit</button>
+                    <button type="button" class="btn btn-primary btn-lg float-right"  onclick="frmSubmit('frm','{{ url('/project/create') }}','{{ url('/project') }}')">Submit</button>
                     {{-- <button type="submit" class="btn btn-primary btn-lg float-right"  >Submit</button> --}}
                    </div>
                 </div>

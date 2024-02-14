@@ -71,13 +71,13 @@
                             <a href="{{ url('/overview/ALL/'.$item->division_id.'/0') }}" target="_blank">{{ formatNum($totalproposal) }}</a>
                           </td>
                           <td align="right">
-                            {{ formatNum(number_format(getDivisionProposalBudget($item->division_id,2024))) }}
-                          </td>
-                          <td align="right">
                             {{ formatNum(number_format(getDivisionProposalBudget($item->division_id,2025))) }}
                           </td>
                           <td align="right">
                             {{ formatNum(number_format(getDivisionProposalBudget($item->division_id,2026))) }}
+                          </td>
+                          <td align="right">
+                            {{ formatNum(number_format(getDivisionProposalBudget($item->division_id,2027))) }}
                           </td>
                         </tr>
                     @endforeach
@@ -86,9 +86,9 @@
                       <td style="border: 1px solid #DDD"><center><b><a href="{{ url('/overview/RD/ALL/0') }}" target="_blank">{{ formatNum($total_rd ) }}</a></b></center></td>
                       <td style="border: 1px solid #DDD"><center><b><a href="{{ url('/overview/NONRD/ALL/0') }}" target="_blank">{{ formatNum($total_nonrd ) }}</a></b></center></td>
                       <td style="border: 1px solid #DDD"><center><b><a href="{{ url('/overview/ALL/ALL/0') }}" target="_blank">{{ formatNum($total_proposal ) }}</a></b></center></td>
-                      <td style="border: 1px solid #DDD" align="right"><b><a href="{{ url('/overview/ALL/ALL/2024') }}" target="_blank">{{ number_format(getTotalProjCost(2024)) }}</a></b></td>
-                      <td style="border: 1px solid #DDD" align="right"><b>{{ number_format(getTotalProjCost(2025)) }}</b></td>
+                      <td style="border: 1px solid #DDD" align="right"><b><a href="{{ url('/overview/ALL/ALL/2024') }}" target="_blank">{{ number_format(getTotalProjCost(2025)) }}</a></b></td>
                       <td style="border: 1px solid #DDD" align="right"><b>{{ number_format(getTotalProjCost(2026)) }}</b></td>
+                      <td style="border: 1px solid #DDD" align="right"><b>{{ number_format(getTotalProjCost(2027)) }}</b></td>
                     </tr>
                     
                     </tbody>

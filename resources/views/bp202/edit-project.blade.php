@@ -519,7 +519,7 @@ $(document).ready(function(){
     $("#slct_mon_orig_end").val("{{ $data['orig_end_mon'] }}");
 
     $("#slct_year_orig").val("{{ $data['orig_start_year'] }}");
-    var orig_start_year = "{{ $data['orig_start_year'] }}";
+    var orig_start_year = {{ $data['orig_start_year'] }};
     for(index = orig_start_year; index <= (orig_start_year + 5); index++) {
         $("#slct_year_orig_end").append("<option value='"+index+"'>"+index+"</option>");
     }

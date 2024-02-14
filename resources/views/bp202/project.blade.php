@@ -40,7 +40,8 @@
                 <table id="tbl" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th style="width: 40%">Project Title</th>
+                    <th style="width: 20%">Program Title</th>
+                    <th style="width: 20%">Project Title</th>
                     <th>Proposal Type</th>
                     <th>Project Cost</th>
                     <th>Duration</th>
@@ -101,6 +102,7 @@
           serverSide: true,
           ajax: '{{ url("/project/json") }}',
           columns: [
+              { data: 'program_title'},
               { data: 'project_title' },
               { data: 'proposal_type' },
               { data: 'project_cost' },

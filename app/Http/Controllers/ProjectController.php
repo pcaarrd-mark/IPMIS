@@ -682,12 +682,18 @@ class ProjectController extends Controller
         {
             $totalRecords = App\Models\BP202\BP202_Project::count();
             $totalRecordswithFilter = App\Models\BP202\BP202_Project::select('count(*) as allcount')
-            ->where('project_title', 'like', '%' .$searchValue . '%')
+            ->where(function($query) use ($searchValue) {
+                $query->where('project_title', 'like', '%' . $searchValue . '%')
+                      ->orWhere('program_title', 'like', '%' . $searchValue . '%');
+            })
             ->whereNull('deleted_at')->count();
 
             // Fetch records
             $records = App\Models\BP202\BP202_Project::orderBy($columnName,$columnSortOrder)
-                ->where('project_title', 'like', '%' .$searchValue . '%')
+                ->where(function($query) use ($searchValue) {
+                    $query->where('project_title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('program_title', 'like', '%' . $searchValue . '%');
+                })
                 ->whereNull('deleted_at')
                 ->skip($start)
                 ->take($rowperpage)
@@ -697,13 +703,19 @@ class ProjectController extends Controller
         {
             $totalRecords = App\Models\BP202\BP202_Project::count();
             $totalRecordswithFilter = App\Models\BP202\BP202_Project::select('count(*) as allcount')
-            ->where('project_title', 'like', '%' .$searchValue . '%')
+            ->where(function($query) use ($searchValue) {
+                $query->where('project_title', 'like', '%' . $searchValue . '%')
+                      ->orWhere('program_title', 'like', '%' . $searchValue . '%');
+            })
             ->where('created_by_division',Auth::user()->division_id)
             ->whereNull('deleted_at')->count();
 
             // Fetch records
             $records = App\Models\BP202\BP202_Project::orderBy($columnName,$columnSortOrder)
-                ->where('project_title', 'like', '%' .$searchValue . '%')
+                ->where(function($query) use ($searchValue) {
+                    $query->where('project_title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('program_title', 'like', '%' . $searchValue . '%');
+                })
                 ->where('created_by_division',Auth::user()->division_id)
                 ->whereNull('deleted_at')
                 ->skip($start)
@@ -716,6 +728,7 @@ class ProjectController extends Controller
 
         foreach($records as $record){
             $id = $record->id;
+            $program_title = $record->program_title;
             $project_title = $record->project_title;
             $proposal_type = $record->proposal_type;
             $project_cost = $record->project_cost;
@@ -767,6 +780,7 @@ class ProjectController extends Controller
  
             $data_arr[] = array(
                 "id" => $id,
+                "program_title" => $program_title,
                 "project_title" => $project_title,
                 "proposal_type" => $proposal_type,
                 "project_cost" => number_format($totalprojcost),

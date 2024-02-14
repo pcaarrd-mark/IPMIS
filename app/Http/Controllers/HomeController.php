@@ -242,9 +242,9 @@ class HomeController extends Controller
         $row = "";
         //GET 3 YEAR
         $yrs = explode('-',request()->period);
-        $y1 = 2024;
-        $y2 = 2025;
-        $y3 = 20256;
+        $y1 = 2025;
+        $y2 = 2026;
+        $y3 = 2027;
 
         $totalprojcount = 0;
 
@@ -301,9 +301,23 @@ class HomeController extends Controller
                 $start_dur = date('F',mktime(0, 0, 0, $dr1[0], 10))." ".$dr1[1];
                 $dr2 = explode('-',$dur1[1]);
                 $end_dur = date('F',mktime(0, 0, 0, $dr2[0], 10))." ".$dr2[1];
+                $yr_start = $dr1[1];
+                $yr_end = $dr2[1];
+            }
+            elseif($projs->project_dur_rev && $projs->project_dur_orig)
+            {
+                $dur1 = explode('|',$projs->project_dur_rev);
+                $dr1 = explode('-',$dur1[0]);
+                $start_dur = date('F',mktime(0, 0, 0, $dr1[0], 10))." ".$dr1[1];
+                $dr2 = explode('-',$dur1[1]);
+                $end_dur = date('F',mktime(0, 0, 0, $dr2[0], 10))." ".$dr2[1];
+                $yr_start = $dr1[1];
+                $yr_end = $dr2[1];
             }
             else
             {
+                $yr_start = 0;
+                $yr_end = 0;
                 $start_dur = null;
                 $end_dur = null;
             }
@@ -502,11 +516,11 @@ class HomeController extends Controller
             </tr>
         
             <tr>
-               <th style="font-size:8px;" align="center"><b>START<b></th>
-               <th style="font-size:8px;" align="center"><b>END<b></th>
-               <th style="font-size:8px;" align="center"><b>TIER 2<br>2024<b></th>
-               <th style="font-size:8px;" align="center"><b>2025<b></th>
-               <th style="font-size:8px;" align="center"><b>2026<b></th>
+               <th style="font-size:8px;" align="center"><b>START</b></th>
+               <th style="font-size:8px;" align="center"><b>END</b></th>
+               <th style="font-size:8px;" align="center"><b>TIER 2<br>2025</b></th>
+               <th style="font-size:8px;" align="center"><b>2026</b></th>
+               <th style="font-size:8px;" align="center"><b>2027</b></th>
             </tr>
         </thead> 
             '.$row.'

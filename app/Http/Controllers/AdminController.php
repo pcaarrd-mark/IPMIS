@@ -10,9 +10,14 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth','admin']);
+    // }
+
     public function __construct()
     {
-        $this->middleware(['auth','admin']);
+        $this->middleware(['auth']);
     }
 
     public function summary()
@@ -24,6 +29,17 @@ class AdminController extends Controller
                 ];
 
         return view('bp202.summary')->with('data',$data);
+    }
+
+    public function dashboard()
+    {
+        $nav = activeNav('bp202_dashboard');
+
+        $data = [
+                    "nav" => $nav
+                ];
+
+        return view('bp202.dashboard')->with('data',$data);
     }
 
     public function agency()
@@ -361,9 +377,9 @@ class AdminController extends Controller
             <tr>
                <th style="font-size:8px;" align="center"><b>START<b></th>
                <th style="font-size:8px;" align="center"><b>END<b></th>
-               <th style="font-size:8px;" align="center"><b>TIER 2<br>2024<b></th>
-               <th style="font-size:8px;" align="center"><b>2025<b></th>
-               <th style="font-size:8px;" align="center"><b>2026<b></th>
+               <th style="font-size:8px;" align="center"><b>TIER 2<br>'.(date('Y')+1).'<b></th>
+               <th style="font-size:8px;" align="center"><b>'.(date('Y')+2).'<b></th>
+               <th style="font-size:8px;" align="center"><b>'.(date('Y')+3).'<b></th>
             </tr>
         </thead> 
             '.$row.'
